@@ -52,7 +52,7 @@ def load_profile(profile_name):
             profile_path + PROFILE_MODS_FOLDER, MODS_PATH)
         replace_directory_recursive(
             profile_path + PROFILE_STORAGE_FOLDER, STORAGE_PATH)
-    except:
+    except OSError:
         sys.exit(1)
 
 
