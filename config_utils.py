@@ -48,9 +48,6 @@ def save_config(new_config):
     ensure_file(path)
     with open(path, 'w') as file:
         json.dump(new_config, file, indent=4)
-    # config_file = open(path, "w")
-    # config_file.write(json_str)
-    # config_file.close()
 
 
 def get_config_path():

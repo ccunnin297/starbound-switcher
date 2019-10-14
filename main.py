@@ -132,8 +132,10 @@ def set_style():
     button_color = (text_color, purple)
     input_color = light_grey
 
-    # sg.ChangeLookAndFeel('Dark2')
-    sg.SetOptions(background_color=background_color,
+    icon_path = "starbound_icon.png"
+
+    sg.SetOptions(icon=icon_path,
+                  background_color=background_color,
                   element_background_color=background_color,
                   text_element_background_color=background_color,
                   input_elements_background_color=input_color,
@@ -141,8 +143,6 @@ def set_style():
                   text_color=text_color,
                   input_text_color=dark_text_color,
                   element_text_color=dark_text_color)
-    # sg.SetOptions(image_filename="starbound_logo.png")
-    # sg.ChangeLookAndFeel('DarkBlue', image_filename="starbound_logo.png")
 
 
 set_style()

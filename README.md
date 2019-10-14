@@ -26,3 +26,8 @@ From lock (don't update packages):
 ### Creating executable
 
 `./packager.sh`
+
+## Style
+
+Styles using Coolors:
+https://coolors.co/20232d-554971-d1d1d1-dbdbdb-397367
