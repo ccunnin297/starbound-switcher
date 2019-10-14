@@ -25,4 +25,4 @@ From lock (don't update packages):
 
 ### Creating executable
 
-`pipenv run pyinstaller -wF main.py`
+`./packager.sh`

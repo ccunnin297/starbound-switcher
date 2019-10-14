@@ -4,6 +4,14 @@ import os
 import shutil
 
 
+def ensure_file(path):
+    """ Creates a file if it does not exist """
+    if os.path.isfile(path):
+        return
+    with open(path, 'w'):
+        pass
+
+
 def list_subfolder_names(path):
     """ Lists folders in path """
     return [o for o in os.listdir(path)
