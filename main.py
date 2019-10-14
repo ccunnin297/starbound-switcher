@@ -39,6 +39,7 @@ def save_profile_clicked():
 def load_profile_clicked():
     if STATE.get_selected_profile() not in STATE.get_profiles():
         return
+    save_profile_clicked()
     load_profile(STATE.get_selected_profile())
     STATE.set_current_profile(STATE.get_selected_profile())
     refresh_current_profile()
