@@ -197,7 +197,7 @@ def set_style():
     button_color = (text_color, purple)
     input_color = light_grey
 
-    icon_path = "starbound_icon.png"
+    icon_path = "app.ico"
 
     sg.SetOptions(icon=icon_path,
                   background_color=background_color,
