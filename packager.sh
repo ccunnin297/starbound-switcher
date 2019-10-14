@@ -1,6 +1,7 @@
 #!/bin/bash
 rm -rf dist
 pipenv run pyinstaller -wF --icon=app.ico main.py
-mv dist/main.exe dist/starbound-switcher.exe
-cp config.default.json dist
-cp app.ico dist
+mkdir dist/starbound-switcher
+mv dist/main.exe dist/starbound-switcher/starbound-switcher.exe
+cp config.default.json dist/starbound-switcher
+cp app.ico dist/starbound-switcher
