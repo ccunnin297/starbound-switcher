@@ -1,5 +1,5 @@
 #!bin/bash
 sh install.sh
 cd python
-pipenv run python/cli.py "$@"
+pipenv run python/main.py
 cd ..
