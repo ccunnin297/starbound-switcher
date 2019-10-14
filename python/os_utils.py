@@ -4,6 +4,12 @@ import os
 import shutil
 
 
+def list_subfolder_names(path):
+    """ Lists folders in path """
+    return [o for o in os.listdir(path)
+            if os.path.isdir(os.path.join(path, o))]
+
+
 def create_folder(path):
     """ Creates a folder if it does not exist """
     if os.path.isdir(path):

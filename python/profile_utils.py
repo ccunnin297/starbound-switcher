@@ -1,6 +1,6 @@
 """ Profile related functions """
 
-from os_utils import create_folder, replace_directory_recursive
+from os_utils import create_folder, replace_directory_recursive, list_subfolder_names
 
 STARBOUND_PATH = "E:\\Program Files (x86)\\Steam\\steamapps\\common\\Starbound"
 
@@ -11,6 +11,11 @@ SWITCHER_PATH = STARBOUND_PATH+"\\starbound_switcher"
 
 PROFILE_MODS_FOLDER = "\\mods"
 PROFILE_STORAGE_FOLDER = "\\storage"
+
+
+def get_profiles():
+    """ Returns list of current profiles """
+    return list_subfolder_names(SWITCHER_PATH)
 
 
 def get_profile_path(profile_name):
