@@ -27,7 +27,16 @@ From lock (don't update packages):
 
 `./packager.sh`
 
-## Style
+## Resources
+
+### Style
 
 Styles using Coolors:
+
 https://coolors.co/20232d-554971-d1d1d1-dbdbdb-397367
+
+### GUI
+
+See PySimpleGUI for more:
+
+https://pysimplegui.readthedocs.io/en/latest/
