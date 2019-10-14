@@ -21,6 +21,9 @@ def new_profile_clicked():
     STATE.set_current_profile(profile_name)
     refresh_profiles()
     refresh_current_profile()
+    STATE.set_selected_profile(profile_name)
+    refresh_selected_profile()
+    STATE.get_window().Element("new_profile_input_text").Update(value="")
 
 
 def new_profile_input_updated(text):
@@ -77,8 +80,13 @@ def delete_profile_clicked():
         refresh_current_profile()
 
     delete_profile(STATE.get_selected_profile())
-    STATE.set_selected_profile("")
     refresh_profiles()
+
+    # Set profile back to first
+    if len(STATE.get_profiles()) == 0:
+        STATE.set_selected_profile("")
+    else:
+        STATE.set_selected_profile(STATE.get_profiles()[0])
 
 
 def profile_list_item_selected(new_value):
@@ -128,7 +136,11 @@ def refresh_current_profile():
 
 
 def refresh_selected_profile():
-    index = STATE.get_profiles().index(STATE.get_current_profile())
+    try:
+        index = STATE.get_profiles().index(STATE.get_current_profile())
+    except ValueError:
+        # If value isn't in list, can't perform update
+        return
     STATE.get_window().Element("profile_list").Update(set_to_index=index)
 
 
