@@ -127,6 +127,11 @@ def refresh_current_profile():
         value=current_profile_text)
 
 
+def refresh_selected_profile():
+    index = STATE.get_profiles().index(STATE.get_current_profile())
+    STATE.get_window().Element("profile_list").Update(set_to_index=index)
+
+
 def refresh_starbound_path():
     STATE.get_window().Element("starbound_path_label").Update(
         value=STATE.get_starbound_path())
@@ -164,6 +169,7 @@ def create_layout():
 def refresh_layout():
     refresh_profiles()
     refresh_current_profile()
+    refresh_selected_profile()
     refresh_starbound_path()
 
 
