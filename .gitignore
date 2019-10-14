@@ -3,6 +3,10 @@
 dist
 config.json
 
+## VSCode
+
+.vscode
+
 ## Python
 
 # Byte-compiled / optimized / DLL files
