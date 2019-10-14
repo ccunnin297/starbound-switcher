@@ -1,6 +1,6 @@
 """ Profile related functions """
 
-from os_utils import create_folder, replace_directory_recursive, list_subfolder_names
+from os_utils import create_folder, replace_directory_recursive, list_subfolder_names, remove_directory_recursive
 
 STARBOUND_PATH = "E:\\Program Files (x86)\\Steam\\steamapps\\common\\Starbound"
 
@@ -49,3 +49,9 @@ def load_profile(profile_name):
         profile_path + PROFILE_MODS_FOLDER, MODS_PATH)
     replace_directory_recursive(
         profile_path + PROFILE_STORAGE_FOLDER, STORAGE_PATH)
+
+
+def delete_profile(profile_name):
+    """ Deletes target profile """
+    profile_path = get_profile_path(profile_name)
+    remove_directory_recursive(profile_path)

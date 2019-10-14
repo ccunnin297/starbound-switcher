@@ -2,7 +2,7 @@
 
 import PySimpleGUI as sg
 
-from profile_utils import save_profile, load_profile
+from profile_utils import save_profile, load_profile, delete_profile
 from model import State
 
 # Event Functions
@@ -10,6 +10,9 @@ from model import State
 
 def new_profile_clicked():
     profile_name = STATE.get_new_profile_name()
+    if not profile_name or profile_name == "":
+        print("Profile missing name")
+        return
     if profile_name in STATE.get_profiles():
         print("Profile already exists")
         return
@@ -37,6 +40,24 @@ def load_profile_clicked():
     refresh_current_profile()
 
 
+def delete_profile_clicked():
+    if STATE.get_selected_profile() not in STATE.get_profiles():
+        return
+
+    popup_text = 'Are you sure you want to delete the following profile?\n\n%s\n\nThis cannot be undone.' % STATE.get_selected_profile()
+    result = sg.PopupOKCancel(popup_text)
+    if result != "OK":
+        return
+
+    if STATE.get_selected_profile() == STATE.get_current_profile():
+        STATE.set_current_profile("")
+        refresh_current_profile()
+
+    delete_profile(STATE.get_selected_profile())
+    STATE.set_selected_profile("")
+    refresh_profiles()
+
+
 def profile_list_item_selected(new_value):
     STATE.set_selected_profile(new_value)
 
@@ -58,6 +79,8 @@ def handle_event(event, values):
         new_profile_input_updated(values['new_profile_input_text'])
     elif event == "load":
         load_profile_clicked()
+    elif event == "delete":
+        delete_profile_clicked()
     elif event == "profile_list":
         profile_list_item_selected(values['profile_list'])
     elif event == "starbound_path_label":
@@ -104,7 +127,8 @@ def create_layout():
             sg.InputCombo((), size=(
                 20, 1), key="profile_list", enable_events=True),
             sg.Button("Save", key="save"),
-            sg.Button("Load", key="load")
+            sg.Button("Load", key="load"),
+            sg.Button("Delete", key="delete")
         ],
         [
             sg.InputText(key="new_profile_input_text", enable_events=True),
