@@ -9,10 +9,7 @@ Python 3
 To ensure dependencies are installed:
 `./install.sh`
 
-This command will install `pipenv`, which will then be used to
-
-All debugging should be done in the python directory:
-`cd python`
+This command will install `pipenv`, which will then be used to install python packages
 
 ### To install
 
@@ -26,6 +23,6 @@ From lock (don't update packages):
 
 `pipenv run main.py`
 
-## Creating executable
+### Creating executable
 
-`./packager.sh`
+`pipenv run pyinstaller -wF main.py`
