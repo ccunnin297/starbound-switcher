@@ -76,8 +76,9 @@ def refresh_profiles():
 
 
 def refresh_current_profile():
+    current_profile_text = "Current: %s" % STATE.get_current_profile()
     STATE.get_window().Element("profile_label").Update(
-        value=STATE.get_current_profile())
+        value=current_profile_text)
 
 
 def refresh_starbound_path():
@@ -119,7 +120,32 @@ def refresh_layout():
     refresh_starbound_path()
 
 
-# Main
+def set_style():
+    purple = "#554971"
+    grey = "#20232D"
+    light_grey = "#D1D1D1"
+    lighter_grey = "#DBDBDB"
+
+    background_color = grey
+    text_color = lighter_grey
+    dark_text_color = grey
+    button_color = (text_color, purple)
+    input_color = light_grey
+
+    # sg.ChangeLookAndFeel('Dark2')
+    sg.SetOptions(background_color=background_color,
+                  element_background_color=background_color,
+                  text_element_background_color=background_color,
+                  input_elements_background_color=input_color,
+                  button_color=button_color,
+                  text_color=text_color,
+                  input_text_color=dark_text_color,
+                  element_text_color=dark_text_color)
+    # sg.SetOptions(image_filename="starbound_logo.png")
+    # sg.ChangeLookAndFeel('DarkBlue', image_filename="starbound_logo.png")
+
+
+set_style()
 STATE = State(sg.Window("Starbound Switcher", create_layout()).Finalize())
 refresh_layout()
 while STATE.window_is_open():
