@@ -4,6 +4,10 @@
 
 Python 3
 
-## To run
+## To run cli
 
 `./run.sh [options...]`
+
+## Creating executable
+
+`./packager.sh`
