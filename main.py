@@ -3,6 +3,7 @@
 import PySimpleGUI as sg
 
 from profile_utils import save_profile, load_profile, delete_profile
+from steam_utils import open_steam_workshop
 from model import State
 
 # Event Functions
@@ -39,12 +40,34 @@ def load_profile_clicked():
     STATE.set_current_profile(STATE.get_selected_profile())
     refresh_current_profile()
 
+    show_workshop_popup()
+
+
+def show_workshop_popup():
+    workshop_text = """
+    When loading a new profile, you'll need to make sure the correct mods are installed in Steam Workshop.
+
+    Hint: You can make this easier in the future by saving mods intended for a profile as a collection.
+
+    Open Steam Workshop page now?"
+    """
+    result = sg.PopupOKCancel(workshop_text)
+
+    if result == "OK":
+        open_steam_workshop()
+
 
 def delete_profile_clicked():
     if STATE.get_selected_profile() not in STATE.get_profiles():
         return
 
-    popup_text = 'Are you sure you want to delete the following profile?\n\n%s\n\nThis cannot be undone.' % STATE.get_selected_profile()
+    popup_text = """
+    Are you sure you want to delete the following profile?
+
+    %s
+
+    This cannot be undone.
+    """ % STATE.get_selected_profile()
     result = sg.PopupOKCancel(popup_text)
     if result != "OK":
         return
