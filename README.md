@@ -6,4 +6,4 @@ Python 3
 
 ## To run
 
-`./switcher.sh [options...]`
+`./run.sh [options...]`
