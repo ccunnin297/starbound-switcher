@@ -4,9 +4,17 @@
 
 Python 3
 
-## To run cli
+## Running locally
 
-`./run.sh [options...]`
+`cd python`
+
+### To install
+
+`pipenv sync`
+
+### To debug
+
+`pipenv run main.py`
 
 ## Creating executable
 
