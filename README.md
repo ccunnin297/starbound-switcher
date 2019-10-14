@@ -27,6 +27,8 @@ From lock (don't update packages):
 
 `./packager.sh`
 
+Once `dist` has been created, you can distribute by compressing the contents of dist to `starbound-switcher.zip`
+
 ## Resources
 
 ### Style
